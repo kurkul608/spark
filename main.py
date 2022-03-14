@@ -18,6 +18,5 @@ uniqRegion = df.select("region").distinct().count()
 print("top 10 authors by followers count")
 output.orderBy(-f.col("count(followers)")).show(10)
 
-output.coalesce(1).write.mode("overwrite").format("csv").save("result.csv")
-
+output.coalesce(1).write.format("com.databricks.spark.csv").option("header", "true").save("mydata.csv")
 
